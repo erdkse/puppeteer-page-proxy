@@ -1,17 +1,20 @@
 {
-  "name": "puppeteer-page-proxy",
+  "name": "erdkse-page-proxy",
   "description": "Additional Node.js module to use with 'puppeteer' for setting proxies per page basis.",
-  "version": "1.2.8",
-  "author": "Cuadrix <cuadrix12000@gmail.com> (https://github.com/Cuadrix)",
-  "homepage": "https://github.com/Cuadrix/puppeteer-page-proxy",
+  "version": "0.0.1",
+  "author": "Erdkse <me@erdkse.com> (https://github.com/erdkse)",
+  "homepage": "https://github.com/erdkse/puppeteer-page-proxy",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cuadrix/puppeteer-page-proxy.git"
+    "url": "https://github.com/erdkse/puppeteer-page-proxy.git"
   },
   "keywords": [
     "puppeteer",
@@ -26,6 +29,7 @@
     "http-proxy-agent": "^4.0.1",
     "https-proxy-agent": "^5.0.0",
     "socks-proxy-agent": "^5.0.0",
+    "standard-version": "^9.0.0",
     "tough-cookie": "^4.0.0"
   }
 }

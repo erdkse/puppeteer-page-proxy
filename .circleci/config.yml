@@ -1,0 +1,76 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12.13
+
+jobs:
+  test_and_lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies- # fallback match
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      # - run: npm run test
+      # - run: npm run lint
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      # - run:
+      #       name: Build package
+      #       command: npm run build
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  publish:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  on_branch:
+    jobs:
+      - test_and_lint
+  on_tags:
+    jobs:
+      - test_and_lint:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
+          requires:
+            - test_and_lint
+      - publish:
+          filters:
+            tags:
+              only: /^v.*/
+          requires:
+            - build
