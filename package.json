@@ -1,7 +1,7 @@
 {
   "name": "erdkse-page-proxy",
   "description": "Additional Node.js module to use with 'puppeteer' for setting proxies per page basis.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Erdkse <me@erdkse.com> (https://github.com/erdkse)",
   "homepage": "https://github.com/erdkse/puppeteer-page-proxy",
   "main": "./src/index.js",
