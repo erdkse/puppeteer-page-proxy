@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/erdkse/puppeteer-page-proxy/compare/v1.0.0...v1.0.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* url null error ([96e11db](https://github.com/erdkse/puppeteer-page-proxy/commit/96e11db39619d1508f293083c0bbd5d736998c00))
+
 ## [1.0.0](https://github.com/erdkse/puppeteer-page-proxy/compare/v0.0.4...v1.0.0) (2020-12-17)
 
 ### 0.0.4 (2020-12-17)
