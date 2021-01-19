@@ -88,10 +88,11 @@ const formatCookie = (cookie) => {
 class CookieHandler extends CDP {
   constructor(request) {
     super(request._client);
-    this.url = request.isNavigationRequest()
-      ? request.url()
-      : request.frame().url();
+    // this.url = request.isNavigationRequest()
+    //   ? request.url()
+    //   : request.frame().url();
     // this.domain = new URL(this.url).hostname;
+    this.url = request.url();
     this.domain = this.url ? new URL(this.url).hostname : "";
   }
   // Parse an array of raw cookies to an array of cookie objects
